@@ -6,16 +6,22 @@
 
 DigitalOut blueled(D3);
 DigitalOut redled(D2);
-DigitalIn button(D4);
+InterruptIn button(D4);
 DigitalOut buzzer(D8);
 DHT Sensor(D6, DHT22);
-
+bool buzzeractive = true;
 int err;
+int PressCount = 0;
+
+void ButtonCounter(){
+ PressCount ++;
+}
 
 // main() runs in its own thread in the OS
 int main() {
   float f = 0.0f;
   int heat;
+  button.rise(&ButtonCounter); //When button is pressed down the event will run 
 
   BSP_LCD_Init();
   BSP_LCD_LayerDefaultInit(LTDC_ACTIVE_LAYER, LCD_FB_START_ADDRESS);
@@ -30,6 +36,8 @@ int main() {
 
   printf("New Test version 2:\n\r");
   while (1) {
+     
+       
     err = Sensor.readData(); //The sensor will read the temperature 
     f = Sensor.ReadTemperature(CELCIUS);
     heat = f; //Heat variable is the same as my f which read the Temperature
@@ -44,7 +52,7 @@ int main() {
       printf("Humidty: H %4.2f\n \r ", f);
     }
     wait_us(1000000);
-    if (heat > 30) {
+    if (heat > 30 && buzzeractive) {
       BSP_LCD_DisplayStringAt(0, 75, (uint8_t *)"Temprature er for varmt!",CENTER_MODE);
         buzzer = 1;
         redled = 1;
@@ -58,6 +66,12 @@ int main() {
     }
     if (heat == 27){
         BSP_LCD_DisplayStringAt(0, 80, (uint8_t *)"Tempraturet er perfekt!",CENTER_MODE);
+    }
+
+    if (PressCount >= 2){
+        buzzeractive = !buzzeractive;
+        buzzer = 0;
+        PressCount=0;
     }
   }
 }
