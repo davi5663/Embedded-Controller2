@@ -23,21 +23,21 @@ int main() {
   BSP_LCD_Clear(LCD_COLOR_WHITE);
   BSP_LCD_SetBackColor(LCD_COLOR_BLACK);
   BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
-  char office[20] = "Kontor 345- David";
+  char office[20] = "Kontor 345- David"; //Creating office name
   BSP_LCD_DisplayStringAt(
       0, 0, (uint8_t *)office,
       CENTER_MODE); // The first number 0 goes more to the right direction
 
   printf("New Test version 2:\n\r");
   while (1) {
-    err = Sensor.readData();
+    err = Sensor.readData(); //The sensor will read the temperature 
     f = Sensor.ReadTemperature(CELCIUS);
-    heat = f;
-    char tempature[25];
-    sprintf(tempature, "Temprature %i", int(f));
+    heat = f; //Heat variable is the same as my f which read the Temperature
+    char tempature[25]; //Creating a char to read my temperature
+    sprintf(tempature, "Temperature %i", int(f)); //Reads both my char and int to print out a text which is "Temperature" and the temperature 
     BSP_LCD_DisplayStringAt(0, 50, (uint8_t *)tempature, CENTER_MODE);
 
-    if (0 == err) {
+    if (0 == err) { //Creating if statements so I can also see it in my mbed studio serial connection tab.
       f = Sensor.ReadTemperature(CELCIUS);
       printf("Celius: C %4.2f\n \r", f);
       f = Sensor.ReadHumidity();
