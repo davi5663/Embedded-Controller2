@@ -9,6 +9,7 @@ DigitalOut redled(D2);
 InterruptIn button(D4);
 DigitalOut buzzer(D8);
 DHT Sensor(D6, DHT22);
+AnalogIn soundsensor (A0);
 bool buzzeractive = true;
 int err;
 int PressCount = 0;
@@ -64,7 +65,7 @@ int main() {
         BSP_LCD_DisplayStringAt(0, 80, (uint8_t *)"Temprature er for koldt!",CENTER_MODE);
         blueled = 1;
     }
-    if (heat == 27){
+    if (heat >= 27){
         BSP_LCD_DisplayStringAt(0, 80, (uint8_t *)"Tempraturet er perfekt!",CENTER_MODE);
     }
 
