@@ -38,7 +38,7 @@ int main() {
   printf("New Test version 2:\n\r");
   while (1) {
      
-       
+    int noise = 0; //Trying to create a variable for my Sound Sensor
     err = Sensor.readData(); //The sensor will read the temperature 
     f = Sensor.ReadTemperature(CELCIUS);
     heat = f; //Heat variable is the same as my f which read the Temperature
@@ -51,6 +51,7 @@ int main() {
       printf("Celius: C %4.2f\n \r", f);
       f = Sensor.ReadHumidity();
       printf("Humidty: H %4.2f\n \r ", f);
+      printf("Loudness: %f\r\n", soundsensor.read());
     }
     wait_us(1000000);
     if (heat > 30 && buzzeractive) {
@@ -73,6 +74,12 @@ int main() {
         buzzeractive = !buzzeractive;
         buzzer = 0;
         PressCount=0;
+    }
+
+    if (noise >= 0.4){
+        soundsensor.read();
+        BSP_LCD_DisplayStringAt(0, 180, (uint8_t *)"Lyden er for højt!",CENTER_MODE);
+        buzzer = 1;
     }
   }
 }
