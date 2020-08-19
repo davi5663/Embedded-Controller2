@@ -41,6 +41,7 @@ void Alarm() {
 // main() runs in its own thread in the OS
 int main() {
   float f = 0.0f;
+  float h;
   int heat;
   button.rise(&ButtonCounter); // When button is pressed down the event will run
 
@@ -61,12 +62,16 @@ int main() {
     
     err = Sensor.readData(); // The sensor will read the temperature
     f = Sensor.ReadTemperature(CELCIUS);
+    h = Sensor.ReadHumidity();
     heat = f; // Heat variable is the same as my f which read the Temperature
     char tempature[25]; // Creating a char to read my temperature
+    char humidty[25];
     sprintf(tempature, "Temperature %i",
             int(f)); // Reads both my char and int to print out a text which is
                      // "Temperature" and the temperature
     BSP_LCD_DisplayStringAt(0, 50, (uint8_t *)tempature, CENTER_MODE);
+    sprintf(humidty, "Fugtighed %2.0f", h);
+    BSP_LCD_DisplayStringAt(0, 80, (uint8_t *)humidty, CENTER_MODE);
 
     if (0 == err) { // Creating if statements so I can also see it in my mbed
                     // studio serial connection tab.
