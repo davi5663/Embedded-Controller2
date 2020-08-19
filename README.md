@@ -9,13 +9,13 @@ I need to do certain task with my Controller. <br/>
 <a href="https://os.mbed.com/teams/components/code/DHT/">DHT</a></br>
 <a>String</a><br/>
 
-<b>Components I used for my project</b>
-<b><a>2 Light diodes</a></b>
-<b><a>1 Buzzer</a></b>
-<b><a>1 button</a></b>
-<b><a>1 Sensor for my Tempature & Humidity</a></b>
-<b><a>1 SoundSensor</a></b>
-<b><a>1 LightSensor</a></b><br/>
+<b>Components I used for my project:</b><br/>
+<a>2 Light diodes</a>
+<a>1 Buzzer</a>
+<a>1 button</a>
+<a>1 Sensor for my Tempature & Humidity</a>
+<a>1 SoundSensor</a>
+<a>1 LightSensor</a><br/>
 
 <b>Functionality:</b><br/>
 In the office 
