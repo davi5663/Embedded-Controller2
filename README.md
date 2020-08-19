@@ -7,7 +7,15 @@ I need to do certain task with my Controller. <br/>
 <a href="https://os.mbed.com/teams/ST/code/BSP_DISCO_F746NG/">BSP_DISCO_F746NG</a> <br/>
 <a href="https://os.mbed.com/users/cmatz3/code/Grove_LCD_RGB_Backlight/">GROVE_LCD_RGB_Backlight</a><br/>
 <a href="https://os.mbed.com/teams/components/code/DHT/">DHT</a></br>
-<a>String</a>
+<a>String</a><br/>
+
+<b>Components I used for my project</b>
+<b><a>2 Light diodes</a></b>
+<b><a>1 Buzzer</a></b>
+<b><a>1 button</a></b>
+<b><a>1 Sensor for my Tempature & Humidity</a></b>
+<b><a>1 SoundSensor</a></b>
+<b><a>1 LightSensor</a></b><br/>
 
 <b>Functionality:</b><br/>
 In the office 
