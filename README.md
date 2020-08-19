@@ -10,11 +10,11 @@ I need to do certain task with my Controller. <br/>
 <a>String</a><br/>
 
 <b>Components I used for my project:</b><br/>
-<a>2 Light diodes</a>
-<a>1 Buzzer</a>
-<a>1 button</a>
-<a>1 Sensor for my Tempature & Humidity</a>
-<a>1 SoundSensor</a>
+<a>2 Light diodes</a><br/>
+<a>1 Buzzer</a><br/>
+<a>1 button</a><br/>
+<a>1 Sensor for my Tempature & Humidity</a><br/>
+<a>1 SoundSensor</a><br/>
 <a>1 LightSensor</a><br/>
 
 <b>Functionality:</b><br/>
