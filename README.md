@@ -17,6 +17,10 @@ diode will light up with a text saying the room is too hot.After a few seconds t
 the buzzer will play and a text comes up telling you that the noise is too loud. If I want to shut down the buzzer I need to press a button twice. 
 I will use C++ for the programming language.<br/>
 
-<b>Changes/Problems/New Functions:</b>
+<b>Changes/Problems/New Functions & Summary:</b>
+While I was working with this task I really enjoyed it. It was not easy since I did not work that much with C++ nor mbed. There where some problems but I managed 
+to fix those problems. I am really happy that I was able to fix those. I had problems with sometimes the text disappeared but a white box stayed there. I figured
+out the problem was that I had to much background color added. 
+
 
 <b>Created by David Szelmeczi</b><br/> 
