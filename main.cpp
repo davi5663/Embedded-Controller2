@@ -21,20 +21,20 @@ void Alarm() {
   int noise = 0;
   while (1) {
     noise = soundsensor;
-    if (noise >= 0.4) {
+    if (noise >= 0.4 && buzzeractive) {
 
       BSP_LCD_DisplayStringAt(0, 180, (uint8_t *)"Lyden er for grande!",
                               CENTER_MODE);
-      // buzzer = 1;
-      //redled = 1;
+       redled = 1;
       ThisThread::sleep_for(1s);
     } else {
-      buzzer = 0;
-      BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
+      redled = 0;
+      
       BSP_LCD_DisplayStringAt(0, 180, (uint8_t *)"                    ",
                               CENTER_MODE);
-      BSP_LCD_SetBackColor(LCD_COLOR_BLACK);
+      
     }
+    
   }
 }
 
@@ -47,7 +47,7 @@ int main() {
   BSP_LCD_Init();
   BSP_LCD_LayerDefaultInit(LTDC_ACTIVE_LAYER, LCD_FB_START_ADDRESS);
   BSP_LCD_SelectLayer(LTDC_ACTIVE_LAYER);
-  BSP_LCD_Clear(LCD_COLOR_WHITE);
+  BSP_LCD_Clear(LCD_COLOR_BLACK);
   BSP_LCD_SetBackColor(LCD_COLOR_BLACK);
   BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
   char office[20] = "Kontor 345- David"; // Creating office name
@@ -58,7 +58,7 @@ int main() {
   printf("New Test version 2:\n\r");
   t.start(&Alarm);
   while (1) {
-
+    
     err = Sensor.readData(); // The sensor will read the temperature
     f = Sensor.ReadTemperature(CELCIUS);
     heat = f; // Heat variable is the same as my f which read the Temperature
@@ -66,6 +66,7 @@ int main() {
     sprintf(tempature, "Temperature %i",
             int(f)); // Reads both my char and int to print out a text which is
                      // "Temperature" and the temperature
+                     //BSP_LCD_SetBackColor(LCD_COLOR_BLACK);
     BSP_LCD_DisplayStringAt(0, 50, (uint8_t *)tempature, CENTER_MODE);
 
     if (0 == err) { // Creating if statements so I can also see it in my mbed
@@ -77,23 +78,28 @@ int main() {
       printf("Loudness: %f\r\n", soundsensor.read());
     }
     wait_us(1000000);
+    BSP_LCD_ClearStringLine(5);
     if (heat > 30 && buzzeractive) {
-      BSP_LCD_DisplayStringAt(0, 75, (uint8_t *)"Temprature er for varmt!",
+
+      BSP_LCD_DisplayStringAt(0, LINE(5), (uint8_t *)"Temprature er for varmt!",
                               CENTER_MODE);
       buzzer = 1;
       redled = 1;
       ThisThread::sleep_for(1s);
       buzzer = 0;
       redled = 0;
-    } else if (heat < 20) {
-      BSP_LCD_DisplayStringAt(0, 80, (uint8_t *)"Temprature er for koldt!",
+    } else if (heat < 20 && buzzeractive) {
+      BSP_LCD_DisplayStringAt(0, LINE(5), (uint8_t *)"Temprature er for koldt!",
                               CENTER_MODE);
       blueled = 1;
     }
+    else {
+         blueled = 0;
+    }
     if (heat >= 27) {
-      BSP_LCD_DisplayStringAt(0, 80, (uint8_t *)"Tempraturet er perfekt!",
+      BSP_LCD_DisplayStringAt(0, LINE(5), (uint8_t *)"Tempraturet er perfekt!",
                               CENTER_MODE);
-      blueled = 0;
+     
     }
 
     if (PressCount >= 2) {
