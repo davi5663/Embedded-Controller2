@@ -17,10 +17,11 @@ diode will light up with a text saying the room is too hot.After a few seconds t
 the buzzer will play and a text comes up telling you that the noise is too loud. If I want to shut down the buzzer I need to press a button twice. 
 I will use C++ for the programming language.<br/>
 
-<b>Changes/Problems/New Functions & Summary:</b>
+<b>Changes/Problems/New Functions & Summary:</b><br/>
 While I was working with this task I really enjoyed it. It was not easy since I did not work that much with C++ nor mbed. There where some problems but I managed 
 to fix those problems. I am really happy that I was able to fix those. I had problems with sometimes the text disappeared but a white box stayed there. I figured
-out the problem was that I had to much background color added. 
+out the problem was that I had to much background color added in other places in the code. At the start I had problems with the tempature not showing up with the
+humidity. I had to add a json file that converts my tempature value into numbers.
 
 
 <b>Created by David Szelmeczi</b><br/> 
