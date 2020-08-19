@@ -10,12 +10,36 @@ InterruptIn button(D4);
 DigitalOut buzzer(D8);
 DHT Sensor(D6, DHT22);
 AnalogIn soundsensor(A0);
+AnalogIn lightsensor(A1);
 bool buzzeractive = true;
 int err;
 int PressCount = 0;
-Thread t;
+Thread tAlarm;
+Thread tLight;
 
 void ButtonCounter() { PressCount++; }
+
+void Light() {
+  float light = 0.2, Lys;
+  while (true) {
+    Lys = lightsensor.read();
+    if (Lys > light) {
+      BSP_LCD_ClearStringLine(9);
+      BSP_LCD_DisplayStringAt(0, LINE(9), (uint8_t *)"Det er lyst!",
+                              CENTER_MODE);
+      printf("Light %f\n", Lys);
+      ThisThread::sleep_for(1s);
+      blueled = 0;
+    }
+    if (Lys < light) {
+      BSP_LCD_DisplayStringAt(0, LINE(9), (uint8_t *)"Det er skummelt!",
+                              CENTER_MODE);
+      printf("Dark %f\n", Lys);
+      ThisThread::sleep_for(1s);
+      blueled = 1;
+    }
+  }
+}
 
 void Alarm() {
   int noise = 0;
@@ -25,16 +49,14 @@ void Alarm() {
 
       BSP_LCD_DisplayStringAt(0, 180, (uint8_t *)"Lyden er for grande!",
                               CENTER_MODE);
-       redled = 1;
+      redled = 1;
       ThisThread::sleep_for(1s);
     } else {
       redled = 0;
-      
+
       BSP_LCD_DisplayStringAt(0, 180, (uint8_t *)"                    ",
                               CENTER_MODE);
-      
     }
-    
   }
 }
 
@@ -57,9 +79,10 @@ int main() {
       CENTER_MODE); // The first number 0 goes more to the right direction
                     // Trying to create a variable for my Sound Sensor
   printf("New Test version 2:\n\r");
-  t.start(&Alarm);
+  tAlarm.start(&Alarm);
+  tLight.start(&Light);
   while (1) {
-    
+
     err = Sensor.readData(); // The sensor will read the temperature
     f = Sensor.ReadTemperature(CELCIUS);
     h = Sensor.ReadHumidity();
@@ -96,14 +119,12 @@ int main() {
       BSP_LCD_DisplayStringAt(0, LINE(5), (uint8_t *)"Temprature er for koldt!",
                               CENTER_MODE);
       blueled = 1;
-    }
-    else {
-         blueled = 0;
+    } else {
+      blueled = 0;
     }
     if (heat >= 27) {
       BSP_LCD_DisplayStringAt(0, LINE(5), (uint8_t *)"Tempraturet er perfekt!",
                               CENTER_MODE);
-     
     }
 
     if (PressCount >= 2) {
