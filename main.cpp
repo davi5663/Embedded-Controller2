@@ -66,7 +66,6 @@ int main() {
     sprintf(tempature, "Temperature %i",
             int(f)); // Reads both my char and int to print out a text which is
                      // "Temperature" and the temperature
-                     //BSP_LCD_SetBackColor(LCD_COLOR_BLACK);
     BSP_LCD_DisplayStringAt(0, 50, (uint8_t *)tempature, CENTER_MODE);
 
     if (0 == err) { // Creating if statements so I can also see it in my mbed
