@@ -20,11 +20,11 @@ Thread tLight;
 void ButtonCounter() { PressCount++; }
 
 void Light() {
-  float light = 0.2, Lys;
+  float light = 0.2, Lys; //0.2 is lightness that I use for my darkness and lightness. 
   while (true) {
     Lys = lightsensor.read();
     if (Lys > light) {
-      BSP_LCD_ClearStringLine(9);
+      BSP_LCD_ClearStringLine(9); //I use this to clear darkness so the text is not on each other. 
       BSP_LCD_DisplayStringAt(0, LINE(9), (uint8_t *)"Det er lyst!",
                               CENTER_MODE);
       printf("Light %f\n", Lys);
