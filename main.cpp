@@ -14,6 +14,7 @@ AnalogIn lightsensor(A1);
 bool buzzeractive = true;
 int err;
 int PressCount = 0;
+int noise = 0;
 Thread tAlarm;
 Thread tLight;
 
@@ -31,7 +32,7 @@ void Light() {
       ThisThread::sleep_for(1s);
       blueled = 0;
     }
-    if (Lys < light && buzzeractive) {
+    if (Lys < light && noise>=0.4 && buzzeractive) {
       BSP_LCD_DisplayStringAt(0, LINE(9), (uint8_t *)"Det er skummelt!",
                               CENTER_MODE);
       printf("Dark %f\n", Lys);
@@ -43,7 +44,6 @@ void Light() {
 }
 
 void Alarm() {
-  int noise = 0;
   while (1) {
     noise = soundsensor;
     if (noise >= 0.4 && buzzeractive) {
