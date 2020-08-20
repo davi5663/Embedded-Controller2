@@ -22,8 +22,9 @@ In the office
 I need to write out which office the Controller is placed, I need to get an accurate tempature the office has. If the office is too cold I was thinking of 
 a blue diode will turn on and a message will be shown on the touchscreen saying, the office is to cold. If the room is too hot a red 
 diode will light up with a text saying the room is too hot.After a few seconds the red diode will switch off. In the evening if a high pitch noise happens, 
-the buzzer will play and a text comes up telling you that the noise is too loud. If I want to shut down the buzzer I need to press a button twice. 
-If it's sunny the LightSensor will tell you on the screen it's light and if it's dark on the screen you will see a text telling you it's dark. 
+the buzzer will play and a text comes up telling you that the noise is too loud. If I want to shut down the buzzer I need to press a button twice, and also press
+the button twice to see all the functions on the screen again.If it's sunny the LightSensor will tell you on the screen 
+it's light and if it's dark on the screen you will see a text telling you it's dark. 
 I will use C++ for the programming language.<br/>
 
 <b>Changes/Problems/New Functions & Summary:</b><br/>

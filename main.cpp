@@ -31,12 +31,13 @@ void Light() {
       ThisThread::sleep_for(1s);
       blueled = 0;
     }
-    if (Lys < light) {
+    if (Lys < light && buzzeractive) {
       BSP_LCD_DisplayStringAt(0, LINE(9), (uint8_t *)"Det er skummelt!",
                               CENTER_MODE);
       printf("Dark %f\n", Lys);
       ThisThread::sleep_for(1s);
       blueled = 1;
+      buzzer = 1;
     }
   }
 }
