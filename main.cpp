@@ -12,6 +12,7 @@ DHT Sensor(D6, DHT22);
 AnalogIn soundsensor(A0);
 AnalogIn lightsensor(A1);
 bool buzzeractive = true;
+static BufferedSerial pc(USBTX, USBRX);
 int err;
 int PressCount = 0;
 int noise = 0;
@@ -66,6 +67,7 @@ int main() {
   float f = 0.0f;
   float h;
   int heat;
+
   button.rise(&ButtonCounter); // When button is pressed down the event will run
 
   BSP_LCD_Init();
@@ -74,16 +76,15 @@ int main() {
   BSP_LCD_Clear(LCD_COLOR_BLACK);
   BSP_LCD_SetBackColor(LCD_COLOR_BLACK);
   BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
-  char office[20] = "Kontor 345- David"; // Creating office name
+  /* char office[20] = "Kontor 345- David"; // Creating office name
   BSP_LCD_DisplayStringAt(
       0, 0, (uint8_t *)office,
       CENTER_MODE); // The first number 0 goes more to the right direction
-                    // Trying to create a variable for my Sound Sensor
+                    // Trying to create a variable for my Sound Sensor*/
   printf("New Test version 2:\n\r");
   tAlarm.start(&Alarm);
   tLight.start(&Light);
   while (1) {
-
     err = Sensor.readData(); // The sensor will read the temperature
     f = Sensor.ReadTemperature(CELCIUS);
     h = Sensor.ReadHumidity();
