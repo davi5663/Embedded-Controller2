@@ -129,7 +129,7 @@ int main() {
                               CENTER_MODE);
     }
 
-    if (PressCount >= 2) {
+    if (PressCount >= 2) { //If you press the button twice you will disable the buzzer and the presscount will also be disabled.
       buzzeractive = !buzzeractive;
       buzzer = 0;
       PressCount = 0;
