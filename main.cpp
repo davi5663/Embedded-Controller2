@@ -22,18 +22,20 @@ Thread tLight;
 void ButtonCounter() { PressCount++; }
 
 void Light() {
-  float light = 0.2, Lys; //0.2 is lightness that I use for my darkness and lightness. 
+  float light = 0.2,
+        Lys; // 0.2 is lightness that I use for my darkness and lightness.
   while (true) {
     Lys = lightsensor.read();
     if (Lys > light) {
-      BSP_LCD_ClearStringLine(9); //I use this to clear darkness so the text is not on each other. 
+      BSP_LCD_ClearStringLine(
+          9); // I use this to clear darkness so the text is not on each other.
       BSP_LCD_DisplayStringAt(0, LINE(9), (uint8_t *)"Det er lyst!",
                               CENTER_MODE);
       printf("Light %f\n", Lys);
       ThisThread::sleep_for(1s);
       blueled = 0;
     }
-    if (Lys < light && noise>=0.4 && buzzeractive) {
+    if (Lys < light && noise >= 0.4 && buzzeractive) {
       BSP_LCD_DisplayStringAt(0, LINE(9), (uint8_t *)"Det er skummelt!",
                               CENTER_MODE);
       printf("Dark %f\n", Lys);
@@ -64,6 +66,7 @@ void Alarm() {
 
 // main() runs in its own thread in the OS
 int main() {
+  int getTxtInp(char linie[], int MAX);
   float f = 0.0f;
   float h;
   int heat;
@@ -81,6 +84,7 @@ int main() {
       0, 0, (uint8_t *)office,
       CENTER_MODE); // The first number 0 goes more to the right direction
                     // Trying to create a variable for my Sound Sensor*/
+
   printf("New Test version 2:\n\r");
   tAlarm.start(&Alarm);
   tLight.start(&Light);
@@ -129,7 +133,8 @@ int main() {
                               CENTER_MODE);
     }
 
-    if (PressCount >= 2) { //If you press the button twice you will disable the buzzer and the presscount will also be disabled.
+    if (PressCount >= 2) { // If you press the button twice you will disable the
+                           // buzzer and the presscount will also be disabled.
       buzzeractive = !buzzeractive;
       buzzer = 0;
       PressCount = 0;
