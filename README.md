@@ -32,8 +32,9 @@ I will use C++ for the programming language.<br/>
 While I was working with this task I really enjoyed it. It was not easy since I did not work that much with C++ nor mbed. There where some problems but I managed 
 to fix those problems. I am really happy that I was able to fix those. I had problems with sometimes the text disappeared but a white box stayed there. I figured
 out the problem was that I had to much background color added in other places in the code. At the start I had problems with the tempature not showing up with the
-humidity. I had to add a json file that converts my tempature value into numbers. I am still working on adding a serial communication where you can write your name 
-and it will print it out.
+humidity. I had to add a json file that converts my tempature value into numbers. I had really hard times working with one of the task. I had to use a serial 
+connection to make my mbed print a text on the screen. I could not complete the task because I did not know how to do it, and I did not want to just copy 
+from the internet that I don't understand. 
 
 
 <b>Created by David Szelmeczi</b><br/> 
