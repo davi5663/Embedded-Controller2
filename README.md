@@ -35,6 +35,7 @@ out the problem was that I had to much background color added in other places in
 humidity. I had to add a json file that converts my tempature value into numbers. I had really hard times working with one of the task. I had to use a serial 
 connection to make my mbed print a text on the screen. I could not complete the task because I did not know how to do it, and I did not want to just copy 
 from the internet that I don't understand. 
+I tried using this code from there offical website: https://os.mbed.com/docs/mbed-os/v6.2/program-setup/serial-communication.html
 
 
 <b>Created by David Szelmeczi</b><br/> 
