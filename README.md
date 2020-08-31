@@ -3,7 +3,7 @@
 In this project I want to work with Embedded-Controller part 2 and, where it's a bit more advanced. I have a case task that is about an office environment, where
 I need to do certain task with my Controller. <br/>
 <b>The Libraries I used for my project:</b> <br/>
-<a href="https://github.com/ARMmbed/mbed-os.git">mbed-os 6.2.0</a> <br/>
+<a href="https://github.com/ARMmbed/mbed-os.git" target="_blank">mbed-os 6.2.0</a> <br/>
 <a href="https://os.mbed.com/teams/ST/code/BSP_DISCO_F746NG/">BSP_DISCO_F746NG</a> <br/>
 <a href="https://os.mbed.com/users/cmatz3/code/Grove_LCD_RGB_Backlight/">GROVE_LCD_RGB_Backlight</a><br/>
 <a href="https://os.mbed.com/teams/components/code/DHT/">DHT</a></br>
