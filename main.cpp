@@ -3,6 +3,7 @@
 #include "Grove_LCD_RGB_Backlight.h" //Libary for LCD Backligt
 #include "stm32746g_discovery_lcd.h" //Libary for TouchScreen
 #include <string>
+#include "header.h"
 
 DigitalOut blueled(D3);
 DigitalOut redled(D2);
@@ -21,7 +22,7 @@ Thread tLight;
 
 void ButtonCounter() { PressCount++; }
 
-void Light() {
+ void Light() {
   float light = 0.2,
         Lys; // 0.2 is lightness that I use for my darkness and lightness.
   while (true) {
@@ -43,7 +44,7 @@ void Light() {
   }
 }
 
-void Alarm() {
+ void Alarm() {
   while (1) {
     noise = soundsensor;
     if (noise >= 0.4 && buzzeractive) {
@@ -75,10 +76,7 @@ int main() {
   BSP_LCD_SetBackColor(LCD_COLOR_BLACK);
   BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
   /* char office[20] = "Kontor 345- David"; // Creating office name
-  BSP_LCD_DisplayStringAt(
-      0, 0, (uint8_t *)office,
-      CENTER_MODE); // The first number 0 goes more to the right direction
-                    // Trying to create a variable for my Sound Sensor*/
+  BSP_LCD_DisplayStringAt(0, 0, (uint8_t *)office,CENTER_MODE); // The first number 0 goes more to the right direction*/
 
   printf("New Test version 2:\n\r");
   tAlarm.start(&Alarm);
@@ -125,12 +123,10 @@ int main() {
     }
 
     if (heat >= 27) {
-      BSP_LCD_DisplayStringAt(0, LINE(5), (uint8_t *)"Tempraturet er perfekt!",
-                              CENTER_MODE);
+      BSP_LCD_DisplayStringAt(0, LINE(5), (uint8_t *)"Tempraturet er perfekt!",CENTER_MODE);
     }
 
-    if (PressCount >= 2) { // If you press the button twice you will disable the
-                           // buzzer and the presscount will also be disabled.
+    if (PressCount >= 2) { // If you press the button twice you will disable the buzzer and the presscount will also be disabled.
       buzzeractive = !buzzeractive;
       buzzer = 0;
       PressCount = 0;
