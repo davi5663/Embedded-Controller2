@@ -7,7 +7,7 @@
 
 DigitalOut blueled(D3);
 DigitalOut redled(D2);
-InterruptIn button(D4);
+InterruptIn button(D4); //I use IntteruptIn for my button to trigger an event when a digital input pin changes
 DigitalOut buzzer(D8);
 DHT Sensor(D6, DHT22);
 AnalogIn soundsensor(A0);
